@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine?</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      color: #b30059;
+    }
+
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 150px;
+    }
+
+    button {
+      position: absolute;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #yes {
+      left: 20px;
+      top: 50px;
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    #yes.highlight {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255, 77, 136, 0.8);
+    }
+
+    #no {
+      right: 20px;
+      top: 50px;
+      background-color: #cccccc;
+    }
+
+    #gif {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    #gif iframe {
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tea will you be my valentine? 💌</h1>
+
+  <div class="buttons">
+    <button id="yes">Yes 💖</button>
+    <button id="no">No</button>
+  </div>
+
+  <div id="gif">
+    <h2>YAYYYYY 💕</h2>
+    <iframe
+      src="https://giphy.com/embed/4Js22dmcqKkvPrqXJ0"
+      width="360"
+      height="360"
+      frameBorder="0"
+      class="giphy-embed"
+      allowFullScreen>
+    </iframe>
+    <p><a href="https://giphy.com/gifs/curiouspavel-4Js22dmcqKkvPrqXJ0">via GIPHY</a></p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const gif = document.getElementById("gif");
+
+    noBtn.addEventListener("mouseenter", () => {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+
+      yesBtn.classList.add("highlight");
+    });
+
+    noBtn.addEventListener("mouseleave", () => {
+      yesBtn.classList.remove("highlight");
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.querySelector(".buttons").style.display = "none";
+      gif.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
